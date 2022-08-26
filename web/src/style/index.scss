@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  font-family: "Gill Sans", Seravek, "Trebuchet MS", sans-serif;
+}
+
+body, html, #root {
+  height: 100%;
+  width: 100%;
+}
+
+.not-interactive {
+  pointer-events: none;
+}
