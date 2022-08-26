@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1661462826711-1" author="Evonicgu (generated)">
+        <createTable tableName="articles">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_articles"/>
+            </column>
+            <column name="entity" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link" type="VARCHAR(512)"/>
+            <column name="date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="source_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1661462826711-2" author="Evonicgu (generated)">
+        <createTable tableName="sources">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sources"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1661462826711-3" author="Evonicgu (generated)">
+        <addUniqueConstraint columnNames="link" constraintName="uc_articles_link" tableName="articles"/>
+    </changeSet>
+    <changeSet id="1661462826711-4" author="Evonicgu (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_sources_name" tableName="sources"/>
+    </changeSet>
+    <changeSet id="1661462826711-5" author="Evonicgu (generated)">
+        <addForeignKeyConstraint baseColumnNames="source_id" baseTableName="articles"
+                                 constraintName="FK_ARTICLES_ON_SOURCE" referencedColumnNames="id"
+                                 referencedTableName="sources"/>
+    </changeSet>
+
+</databaseChangeLog>
